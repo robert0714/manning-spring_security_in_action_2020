@@ -1,5 +1,5 @@
 * [https://github.com/robert0714/spring_security_in_action_2020/tree/master/ssia-ch16-ex1](https://github.com/robert0714/spring_security_in_action_2020/tree/master/ssia-ch16-ex1)
-*  [https://livebook.manning.com/book/spring-security-in-action/chapter-16/10] (https://livebook.manning.com/book/spring-security-in-action/chapter-16/30) 
+*  [https://livebook.manning.com/book/spring-security-in-action/chapter-16/10](https://livebook.manning.com/book/spring-security-in-action/chapter-16/30) 
 
 ## Chapter 16 : GLOBAL METHOD SECURITY: PRE- AND POSTAUTHORIZATIONS 
 ![cover](../../cover.webp) 

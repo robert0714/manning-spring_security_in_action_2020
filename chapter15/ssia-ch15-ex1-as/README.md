@@ -1,7 +1,7 @@
 ## CHAPTER 15 OAuth 2: Using JWT and cryptographic signatures (ssia-ch15-ex1-as)
 
 * [https://github.com/robert0714/spring_security_in_action_2020/tree/master/ssia-ch15-ex1-as](https://github.com/robert0714/spring_security_in_action_2020/tree/master/ssia-ch15-ex1-as)
-*  [https://livebook.manning.com/book/spring-security-in-action/chapter-15/30] (https://livebook.manning.com/book/spring-security-in-action/chapter-15/30) 
+*  [https://livebook.manning.com/book/spring-security-in-action/chapter-15/30](https://livebook.manning.com/book/spring-security-in-action/chapter-15/30) 
 # Notes
 
 ## 15.1.2 Implementing an authorization server to issue JWTs
