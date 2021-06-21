@@ -21,8 +21,10 @@ the method.
 
 **Page 420**, 
 Listing 17.5 presents the same project we worked on earlier in this section, but I
-changed the ***List*** definition with an immutable instance as returned by the
+changed the ***List*** definition with an ***immutable instance*** as returned by the
 ***List.of()*** method to test what happens in this situation.
+
+Listing 17.5 Using an ***immutable instance***
 ```java
 @RestController
 public class ProductController {
@@ -60,12 +62,11 @@ The response body is:
 }
 ```
 
-In the application console, you can find an exception similar to the one presented in
-the following code snippet:
+In the application console, you can find an exception similar to the one presented in the following code snippet:
 
 ```
 java.lang.UnsupportedOperationException: null
 at java.base/java.util.ImmutableCollections.uoe(ImmutableCollections.java:73)
-~[na:na]
+        ~[na:na]
 ...
 ```

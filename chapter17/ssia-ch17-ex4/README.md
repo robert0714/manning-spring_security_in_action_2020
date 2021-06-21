@@ -56,6 +56,30 @@ We use Spring Data JPA to connect to a database. For this reason, we also need t
    <scope>runtime</scope>
 </dependency>
 ```
+#### Mysql 8
+
+```bash
+
+maas-dev-docekr-V2]$ docker exec -it  mysql /bin/bash
+ 
+bash-4.2# mysql -uroot -p spring
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.25 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+create user "root"@"%" identified by "qazwsx"; 
+grant all  privileges  on  *.* to   "root"@"%"  with  grant option ;
+```
 
 | Figure 17.10 In our scenario, we start by implementing the application using @PostFilter to filter products based on their owner. Then we change the implementation to add the condition directly on the query. This way, we make sure the application only gets from the source the needed records. |
 |-----------|
@@ -139,25 +163,35 @@ Julien owns it, ***chocolate*** won’t appear in the response. You find the cal
 responses in the next code snippets. To call the endpoint /products and authenticate
 with user Nikolai, issue this command:
 ```bash
-curl -u nikolai:12345 http://localhost:8080/products/c
+curl -u nikolai:12345 http://localhost:8080/products/c  |jq "."
 ```
 The response body is
 ```json
 [
-  {"id":2,"name":"candy","owner":"nikolai"}
+  {
+    "id": 2,
+    "name": "candy",
+    "owner": "nikolai"
+  }
 ]
+
 ```
 
 To call the endpoint /products and authenticate with user Julien, issue this command:
 ```bash
-curl -u julien:12345 http://localhost:8080/products/c
+curl -u julien:12345 http://localhost:8080/products/c  |jq "."
 ```
 
 The response body is
 ```json
 [
-  {"id":3,"name":"chocolate","owner":"julien"}
+  {
+    "id": 3,
+    "name": "chocolate",
+    "owner": "julien"
+  }
 ]
+
 ```
 
 

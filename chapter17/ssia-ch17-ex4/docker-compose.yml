@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  mysqldb:
+    container_name: mysql
+    image: mysql:8.0.25
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    # - $PWD/data/mysql:/var/lib/mysql
+    - $PWD/my55.cnf:/etc/my.cnf
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes" 
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: "spring"
+      MYSQL_USER: "ecuser"
+      MYSQL_PASSWORD: "qazwsx"
+      EXTRA_OPTS: "--lower_case_table_names=1"
+      TZ: "Asia/Taipei"
+    network_mode:  "host"
+    # ports: 
+    #  - "3306:3306" 
+  

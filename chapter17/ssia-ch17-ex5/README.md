@@ -13,20 +13,13 @@ the method.
 
 ### 17.3 Using filtering in Spring Data repositories
 
-We discussed earlier in this section that using @PostFilter in the repository isn’t the
-best choice. We should instead make sure we don’t select from the database what we
-don’t need. So how can we change our example to select only the required data
-instead of filtering data after selection? We can provide SpEL expressions directly in
-the queries used by the repository classes. To achieve this, we follow two simple steps:
+We discussed earlier in this section that using ***@PostFilter*** in the repository isn’t the best choice. We should instead make sure we don’t select from the database what we
+don’t need. So how can we change our example to select only the required data instead of filtering data after selection? We can provide SpEL expressions directly in the queries used by the repository classes. To achieve this, we follow two simple steps:
 
 1. We add an object of type ***SecurityEvaluationContextExtension*** to the Spring context. We can do this using a simple @Bean method in the configuration class.
 2. We adjust the queries in our repository classes with the proper clauses for selection.
 
-In our project, to add the ***SecurityEvaluationContextExtension*** bean in the
-context, we need to change the configuration class as presented in listing 17.12. To
-keep all the code associated with the examples in the book, I use here another project
-that named ssia-ch17-ex5.
-
+In our project, to add the ***SecurityEvaluationContextExtension*** bean in the context, we need to change the configuration class as presented in listing 17.12. To keep all the code associated with the examples in the book, I use here another project that named ssia-ch17-ex5.
 
 Listing 17.12 Adding the ***SecurityEvaluationContextExtension*** to the context
 ```java
@@ -56,31 +49,34 @@ public interface ProductRepository
     List<Product> findProductByNameContains(String text);
 }
 ```
-We can now start the application and test it by calling the /products/{text} endpoint.
-We expect that the behavior remains the same as for the case where we used
-***@PostFilter***. But now, only the records for the right owner are retrieved from the
-database, which makes the functionality faster and more reliable. The next code snippets
-present the calls to the endpoint. To call the endpoint /products and authenticate
-with user Nikolai, we use this command:
+We can now start the application and test it by calling the /products/{text} endpoint. We expect that the behavior remains the same as for the case where we used ***@PostFilter***. But now, only the records for the right owner are retrieved from the database, which makes the functionality faster and more reliable. The next code snippets present the calls to the endpoint. To call the endpoint /products and authenticate with user Nikolai, we use this command:
 
 ```bash
-curl -u nikolai:12345 http://localhost:8080/products/c
+curl -u nikolai:12345 http://localhost:8080/products/c  |jq "."
 ```
 
 The response body is
 ```json
 [
-  {"id":2,"name":"candy","owner":"nikolai"}
+  {
+    "id": 2,
+    "name": "candy",
+    "owner": "nikolai"
+  }
 ]
 ```
 To call the endpoint /products and authenticate with user Julien, we use this command:
 ```bash
-curl -u julien:12345 http://localhost:8080/products/c
+curl -u julien:12345 http://localhost:8080/products/c  |jq "."
 ```
 
 The response body is
 ```json
 [
-  {"id":3,"name":"chocolate","owner":"julien"}
+  {
+    "id": 3,
+    "name": "chocolate",
+    "owner": "julien"
+  }
 ]
 ```
