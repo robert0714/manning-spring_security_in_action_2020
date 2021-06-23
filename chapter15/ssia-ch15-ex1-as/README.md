@@ -22,8 +22,6 @@ or
 $ curl -u client:secret -X POST http://localhost:8080/oauth/token\?grant_type=password\&username=john\&password=12345\&scope=read | jq "."
 
 ```
-
-
 The response body is
 
 ```json
@@ -35,5 +33,10 @@ The response body is
   "scope": "read",
   "jti": "609b7818-5763-431c-833d-dcd11ea9be74"
 }
+```
 
+IF you want get token ,try the below command :
+```bash
+export TOKEN=$(curl -u client:secret -X POST http://localhost:8080/oauth/token\?grant_type=password\&username=john\&password=12345\&scope=read |jq -r '.access_token') 
+echo $TOKEN 
 ```
