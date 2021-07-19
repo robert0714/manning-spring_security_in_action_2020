@@ -124,17 +124,19 @@ In the next code snippet, I extracted a part of the OAuth 2 configuration that y
 by clicking the OpenID Endpoint Configuration link. This configuration provides the
 token endpoint, the authorization endpoint, and the list of supported grant types.
 These details should be familiar to you, as we discussed them in chapters 12 through 15.
+
+``` bash
+curl -s http://10.100.98.200:8080/auth/realms/master/.well-known/uma2-configuration |jq .
+```
+
+The output is as below
 ```json
 {
 
   "issuer":"http://localhost:8080/auth/realms/master",
-
   "authorization_endpoint":"http://localhost:8080/auth/realms/master/protocol/openid-connect/auth",
-
-  "token_endpoint":"http://localhost:8080/auth/realms/master/protocol/openid-connect/token",
-   
-  "jwks_uri":"http://localhost:8080/auth/realms/master/protocol/openid-connect/certs",
-   
+  "token_endpoint":"http://localhost:8080/auth/realms/master/protocol/openid-connect/token",   
+  "jwks_uri":"http://localhost:8080/auth/realms/master/protocol/openid-connect/certs",   
   "grant_types_supported":[
       "authorization_code",
       "implicit",
