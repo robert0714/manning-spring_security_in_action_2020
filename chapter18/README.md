@@ -266,7 +266,7 @@ discussed there.
 
 To obtain the access token, call the /token endpoint of the authorization server:
 ```bash
-curl -XPOST "http://localhost:8080/auth/realms/master/protocol/openidconnect/token" \
+curl -XPOST "http://localhost:8080/auth/realms/master/protocol/openid-connect/token" \
 -H "Content-Type: application/x-www-form-urlencoded" \
 --data-urlencode "grant_type=password" \
 --data-urlencode "username=rachel" \
